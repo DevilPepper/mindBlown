@@ -1,0 +1,8 @@
+pick a development environment
+-What's hot/in demand?
+-Terms of Use/Licensing
+
+find out about usage information permissions
+Name this shit
+Wing it
+while(-1 != (unsigned int)money++);
