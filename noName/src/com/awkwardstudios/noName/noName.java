@@ -43,6 +43,7 @@ public class noName implements ApplicationListener {
 		*/
 	}
 
+
 	@Override
 	public void dispose() {
 		/*
@@ -78,5 +79,13 @@ public class noName implements ApplicationListener {
 
 	@Override
 	public void resume() {
+	}
+	
+
+	public static void loggi(String s)
+	{
+		//For debugging shit.
+		//In case we are too lazy, we an just comment this line out before release
+		System.out.printf(s+"\n");
 	}
 }
