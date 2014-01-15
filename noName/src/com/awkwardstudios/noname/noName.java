@@ -1,4 +1,4 @@
-package com.awkwardstudios.noname;
+package com.awkwardstudios.noName;
 
 import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
@@ -11,13 +11,20 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class noName implements ApplicationListener {
+	/*
+	 * give noName some properties
+	 * 
 	private OrthographicCamera camera;
 	private SpriteBatch batch;
 	private Texture texture;
 	private Sprite sprite;
+	*/
 	
 	@Override
 	public void create() {		
+		/*
+		 * initialize the properties here
+		 * 
 		float w = Gdx.graphics.getWidth();
 		float h = Gdx.graphics.getHeight();
 		
@@ -33,16 +40,25 @@ public class noName implements ApplicationListener {
 		sprite.setSize(0.9f, 0.9f * sprite.getHeight() / sprite.getWidth());
 		sprite.setOrigin(sprite.getWidth()/2, sprite.getHeight()/2);
 		sprite.setPosition(-sprite.getWidth()/2, -sprite.getHeight()/2);
+		*/
 	}
+
 
 	@Override
 	public void dispose() {
+		/*
+		 *delete stuff here
+		 * 
 		batch.dispose();
 		texture.dispose();
+		*/
 	}
 
 	@Override
 	public void render() {		
+		/*
+		 * every frame
+		 * 
 		Gdx.gl.glClearColor(1, 1, 1, 1);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
@@ -50,6 +66,7 @@ public class noName implements ApplicationListener {
 		batch.begin();
 		sprite.draw(batch);
 		batch.end();
+		*/
 	}
 
 	@Override
@@ -62,5 +79,13 @@ public class noName implements ApplicationListener {
 
 	@Override
 	public void resume() {
+	}
+	
+
+	public static void loggi(String s)
+	{
+		//For debugging shit.
+		//In case we are too lazy, we an just comment this line out before release
+		System.out.printf(s+"\n");
 	}
 }
