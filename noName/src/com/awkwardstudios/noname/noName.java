@@ -1,44 +1,17 @@
 package com.awkwardstudios.noname;
 
-import com.badlogic.gdx.ApplicationListener;
+import com.badlogic.gdx.Game;
 
-public class noName implements ApplicationListener {
-        // give noName some properties
-        
-        @Override
-        public void create() {                
-                // initialize the properties here
-        }
+public class noName extends Game {
 
+	splashScreen splash;
+	titleScreen tit;
 
-        @Override
-        public void dispose() {
-                //delete stuff here
-        }
-
-        @Override
-        public void render() {                
-                //every frame
-        	/*
-        	if(Gdx.input.isTouched())
-        	{
-        	stuff.printf("hbdkdbd\n");
-        	stuff.printf(Gdx.input.getX()+"\n");
-        	stuff.printf("(x,y): (%d, %d)\n", Gdx.input.getX(), Gdx.input.getY());
-        	}
-        	*/
-        }
-
-        @Override
-        public void resize(int width, int height) {
-        }
-
-        @Override
-        public void pause() {
-        }
-
-        @Override
-        public void resume() {
-        }
-
+   @Override
+    public void create() {
+            
+	   splash = new splashScreen(this);
+	   tit = new titleScreen(this);
+	   setScreen(splash);
+    }
 }
