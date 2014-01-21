@@ -31,15 +31,19 @@ public class Assets implements Disposable, AssetErrorListener {
             logger.info("loading group " + groupName);
             
             Array<Asset> assets = groups.get(groupName, null);
-            
+            logger.info("Array gotten\n");
             if (assets != null) {
+            	logger.info("shit isn't null\n");
                     for (Asset asset : assets) {
+                    	logger.info(asset.path + " type: " + asset.type.toString());
                             manager.load(asset.path, asset.type);
+                            logger.info("got it");
                     }
             }
             else {
                     logger.error("error loading group " + groupName + ", not found");
             }
+            logger.info("No Problems here, so wtf?!");
     }
     
     public void unloadGroup(String groupName) {

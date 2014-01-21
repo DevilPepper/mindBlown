@@ -15,6 +15,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
+import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.TimeUtils;
 
 public class rainNbucket extends basicScreen {
@@ -30,17 +31,19 @@ public class rainNbucket extends basicScreen {
 	Music rainMusic;
 	Vector3 touchPos;
 	Array<Rectangle> raindrops;
+	Logger logger;
 	long lastDropTime;
 	
 
     // constructor to keep a reference to the main Game class
      public rainNbucket(noName g){
              super(g);
-             
+             logger = new Logger("RAINING", Logger.INFO);
      }
      
      @Override
      public void render(float delta) {
+    	 logger.info("Guess who's rendering");
          // update and draw stuff
     	 Gdx.gl.glClearColor(0, 0, 0.2f, 1);
  		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
@@ -97,12 +100,16 @@ public class rainNbucket extends basicScreen {
     @Override
      public void show() {
           // called when this screen is set as the screen with game.setScreen();
-    	dropImage = game.asset.get("data/droplet.png", Texture.class);
+    	dropImage = game.asset.get("data/droplet.png", Texture.class);//This
+      	 logger.info("dropImage");
 	      bucketImage = game.asset.get("data/bucket.png", Texture.class);
+	    	 logger.info("bucket");
 	      
 	      // load the drop sound effect and the rain background "music"
 	      dropSound = game.asset.get("data/drop.wav", Sound.class);
+	    	 logger.info("dropSound");
 	      rainMusic = game.asset.get("data/rain.mp3", Music.class);
+	    	 logger.info("rainMusic");
 	      
 	      // start the playback of the background music immediately
 	      rainMusic.setLooping(true);
