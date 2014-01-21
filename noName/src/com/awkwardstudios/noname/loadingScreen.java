@@ -1,19 +1,27 @@
 package com.awkwardstudios.noname;
 
 
-public class basicStage extends basicScreen {
 
+public class loadingScreen extends basicScreen {
+	 
+
+    basicScreen screen;
+
+
+    public void load(basicScreen s, String groupName)
+    {
+
+        screen.game.asset.loadGroup(groupName);
+    }
     // constructor to keep a reference to the main Game class
-     public basicStage(noName g){
-             super(g);
+     public loadingScreen(noName g){
+    	super(g);
+    	this.screen = game.rain;
      }
-/*
+     
      @Override
      public void render(float delta) {
-         // update and draw stuff
-    	 Gdx.gl.glClearColor(0, 0, 1, 1);
-         Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-    	 if(Gdx.input.isTouched())game.setScreen(game.splash);;
+    	 if(screen.game.asset.update())screen.game.setScreen(screen);
      }
 
 
@@ -31,6 +39,7 @@ public class basicStage extends basicScreen {
     @Override
      public void hide() {
           // called when current screen changes from this to a different screen
+    	this.screen = game.rain;
      }
 
 
@@ -48,5 +57,4 @@ public class basicStage extends basicScreen {
      public void dispose() {
              // never called automatically
      }
-     */
 }

@@ -1,13 +1,20 @@
 package com.awkwardstudios.noname;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL10;
 
-public class basicStage extends basicScreen {
+public class basicScreen implements Screen {
+	 
+
+    noName game;
+
 
     // constructor to keep a reference to the main Game class
-     public basicStage(noName g){
-             super(g);
+     public basicScreen(noName g){
+             this.game = g;
      }
-/*
+
      @Override
      public void render(float delta) {
          // update and draw stuff
@@ -48,5 +55,4 @@ public class basicStage extends basicScreen {
      public void dispose() {
              // never called automatically
      }
-     */
 }
