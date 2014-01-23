@@ -1,145 +1,130 @@
 package com.awkwardstudios.noname;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.assets.AssetDescriptor;
-import com.badlogic.gdx.assets.AssetErrorListener;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Disposable;
+import com.badlogic.gdx.utils.Json;
 import com.badlogic.gdx.utils.Logger;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.XmlReader;
 import com.badlogic.gdx.utils.XmlReader.Element;
 
-public class Assets implements Disposable, AssetErrorListener {
-//Straight copy and paste from some nigga
+public class Assets extends AssetManager{
+	
+
     private static final String TAG = "Assets";
     private Logger logger;
-    private AssetManager manager;
     private ObjectMap<String, Array<Asset>> groups;
-    
-    public Assets(String assetFile) {
-            logger = new Logger(TAG, Logger.INFO);
-            
-            manager = new AssetManager();
-            manager.setErrorListener(this);
-            
-            loadGroups(assetFile);
-    }
-            
-    public void loadGroup(String groupName) {
-            logger.info("loading group " + groupName);
-            
-            Array<Asset> assets = groups.get(groupName, null);
-            logger.info("Array gotten\n");
-            if (assets != null) {
-            	logger.info("shit isn't null\n");
-                    for (Asset asset : assets) {
-                    	logger.info(asset.path + " type: " + asset.type.toString());
-                            manager.load(asset.path, asset.type);
-                            logger.info("got it");
-                    }
-            }
-            else {
-                    logger.error("error loading group " + groupName + ", not found");
-            }
-            logger.info("No Problems here, so wtf?!");
-    }
-    
-    public void unloadGroup(String groupName) {
-            logger.info("unloading group " + groupName);
-            
-            Array<Asset> assets = groups.get(groupName, null);
-            
-            if (assets != null) {
-                    for (Asset asset : assets) {
-                            if (manager.isLoaded(asset.path, asset.type)) {
-                                    manager.unload(asset.path);
-                            }
-                    }
-            }
-            else {
-                    logger.error("error unloading group " + groupName + ", not found");
-            }
-    }
-    
-    public synchronized <T> T get(String fileName) {
-            return manager.get(fileName);
-    }
-    
-    public synchronized <T> T get(String fileName, Class<T> type) {
-            return manager.get(fileName, type);
-    }
-    
-    public boolean update() {
-            return manager.update();
-    }
-    
-    public void finishLoading() {
-            manager.finishLoading();
-    }
-    
-    public float getProgress() {
-            return manager.getProgress();
-    }
+	
+	public Assets(String assetFile)
+	{
+		super();
 
-    @Override
-    public void dispose() {
-            logger.info("shutting down");
-            manager.dispose();
-    }
-    
-   
-    private void loadGroups(String assetFile) {
-            groups = new ObjectMap<String, Array<Asset>>();
-            
-            logger.info("loading file " + assetFile);
-            
-            try {
-                    XmlReader reader = new XmlReader();
-                    Element root = reader.parse(Gdx.files.internal(assetFile));
-
-                    for (Element groupElement : root.getChildrenByName("group")) {
-                            String groupName = groupElement.getAttribute("name", "base");
-                            if (groups.containsKey(groupName)) {
-                                    logger.error("group " + groupName + " already exists, skipping");
-                                    continue;
-                            }
-                            
-                            logger.info("registering group " + groupName);
-                            
-                            Array<Asset> assets = new Array<Asset>();
-                            
-                            for (Element assetElement : groupElement.getChildrenByName("asset")) {
-                                    assets.add(new Asset(assetElement.getAttribute("type", ""),
-                                                                             assetElement.getAttribute("path", "")));
-                            }
-                            
-                            groups.put(groupName, assets);
-                    }
-            }
-            catch (Exception e) {
-                    logger.error("error loading file " + assetFile + " " + e.getMessage());
-            }
-    }
-    
-    private class Asset {
-            public Class<?> type;
-            public String path;
-            
-            public Asset(String type, String path) {
-                    try {
-                            this.type = Class.forName(type);
-                            this.path = path;
-                    } catch (ClassNotFoundException e) {
-                            logger.error("asset type " + type + " not found");
-                    }
-            }
-    }
-
-	@Override
-	public void error(@SuppressWarnings("rawtypes") AssetDescriptor asset, Throwable throwable) {
-		logger.error("error loading " + asset.fileName);
-		
+        logger = new Logger(TAG, Logger.INFO);
+		loadGroups(assetFile);
 	}
+
+	public void loadGroup(String groupName) {
+        logger.info("loading group " + groupName);
+        
+        Array<Asset> assets = groups.get(groupName, null);
+        logger.info("Array gotten\n");
+        if (assets != null) {
+        	logger.info("shit isn't null\n");
+                for (Asset asset : assets) {
+                	logger.info(asset.path + " type: " + asset.type.toString());
+                        this.load(asset.path, asset.type);
+                        logger.info("got it");
+                }
+        }
+        else {
+                logger.error("error loading group " + groupName + ", not found");
+        }
+        logger.info("No Problems here, so wtf?!");
+}
+
+public void unloadGroup(String groupName) {
+        logger.info("unloading group " + groupName);
+        
+        Array<Asset> assets = groups.get(groupName, null);
+        
+        if (assets != null) {
+                for (Asset asset : assets) {
+                        if (this.isLoaded(asset.path, asset.type)) {
+                                this.unload(asset.path);
+                        }
+                }
+        }
+        else {
+                logger.error("error unloading group " + groupName + ", not found");
+        }
+}
+
+	
+	private void loadGroups(String assetFile) {
+		logger.info("Loading");
+		FileHandle filename = Gdx.files.internal(assetFile);
+		if(filename.extension().equalsIgnoreCase("json"))
+		{
+			logger.info("JSON");
+			Json json = new Json();
+			//ObjectMap maps = json.fromJson(ObjectMap.class, filename);
+			//groups = new ObjectMap<String, Array<Asset>>();
+			//groups.putAll(map);
+			groups = json.fromJson(groups.getClass(), filename);
+		}
+		else
+		{
+
+			logger.info("XML");
+	        groups = new ObjectMap<String, Array<Asset>>();
+	        
+	        logger.info("loading file " + assetFile);
+	        
+	        try {
+	                XmlReader reader = new XmlReader();
+	                Element root = reader.parse(filename);
+	
+	                for (Element groupElement : root.getChildrenByName("group")) {
+	                        String groupName = groupElement.getAttribute("name", "base");
+	                        if (groups.containsKey(groupName)) {
+	                                logger.error("group " + groupName + " already exists, skipping");
+	                                continue;
+	                        }
+	                        
+	                        logger.info("registering group " + groupName);
+	                        
+	                        Array<Asset> assets = new Array<Asset>();
+	                        
+	                        for (Element assetElement : groupElement.getChildrenByName("asset")) {
+	                                assets.add(new Asset(assetElement.getAttribute("type", ""),
+	                                                     assetElement.getAttribute("path", ""),
+	                                                     assetElement.getAttribute("name", "")));
+	                        }
+	                        
+	                        groups.put(groupName, assets);
+	                }
+	        }
+	        catch (Exception e) {
+	                logger.error("error loading file " + assetFile + " " + e.getMessage());
+	        }
+		}
+}
+
+private class Asset {
+        public Class<?> type;
+        public String path;
+        @SuppressWarnings("unused") public String name;
+        
+        public Asset(String type, String path, String name) {
+                try {
+                        this.type = Class.forName(type);
+                        this.path = path;
+                        this.name = name;
+                } catch (ClassNotFoundException e) {
+                        logger.error("asset type " + type + " not found");
+                }
+        }
+}
 }
