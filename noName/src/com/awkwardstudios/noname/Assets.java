@@ -61,6 +61,11 @@ public void unloadGroup(String groupName) {
         }
 }
 
+public String showJson()
+{
+	Json json = new Json();
+	return json.prettyPrint(groups);
+}
 	
 	private void loadGroups(String assetFile) {
 		logger.info("Loading");
@@ -72,7 +77,17 @@ public void unloadGroup(String groupName) {
 			//ObjectMap maps = json.fromJson(ObjectMap.class, filename);
 			//groups = new ObjectMap<String, Array<Asset>>();
 			//groups.putAll(map);
+			//json.setElementType(groups.getClass(), "group", String.class);
+			//json.setElementType(groups.getClass(), "assets", Asset.class);
 			groups = json.fromJson(groups.getClass(), filename);
+			
+			logger.info("moved from json to groups");
+			//logger.info(groups.keys().toString());
+
+	        //Array<Asset> assets = groups.get("rain", null);
+            //for (Asset asset : assets) {
+            	//logger.info(asset.path + " type: " + asset.type.toString());
+            //}
 		}
 		else
 		{
@@ -127,4 +142,6 @@ private class Asset {
                 }
         }
 }
+
+
 }

@@ -7,12 +7,15 @@ import com.badlogic.gdx.graphics.GL10;
 public class basicScreen implements Screen {
 	 
 
-    noName game;
+    protected noName game;
+    protected String groupname;
 
-
+    public String getAssetGroup(){return groupname;}
+    
     // constructor to keep a reference to the main Game class
      public basicScreen(noName g){
              this.game = g;
+             this.groupname = "load";
      }
 
      @Override

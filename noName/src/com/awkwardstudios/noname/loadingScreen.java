@@ -1,5 +1,6 @@
 package com.awkwardstudios.noname;
 
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
@@ -13,29 +14,31 @@ public class loadingScreen extends basicScreen {
     basicScreen screen;
     Logger logger;
 
-    public void load(basicScreen s, String groupName)
+    
+    public void load(basicScreen s)
     {
-        screen.game.asset.loadGroup(groupName);
     	logger.info("READY...");
-    	//screen.game.asset.load("data/bucket.png", Texture.class);
+    	screen = s;
+    	game.asset.loadGroup(screen.getAssetGroup());
+        //screen.game.asset.load("data/bucket.png", Texture.class);
     	//screen.game.asset.load("data/drop.wav", Sound.class);
     	//screen.game.asset.load("data/drop.wav", Sound.class);
     	//screen.game.asset.load("data/rain.mp3", Music.class);
-        logger.info("do queuing");
+        logger.info("done queuing");
+        game.setScreen(this);
     }
     // constructor to keep a reference to the main Game class
      public loadingScreen(noName g){
     	super(g);
-    	this.screen = game.rain;
     	logger = new Logger("loading", Logger.INFO);
      }
      
      @Override
      public void render(float delta) {
     	 logger.info("RENDERING");
-    	 if(screen.game.asset.update())screen.game.setScreen(screen);
+    	 if(game.asset.update())game.setScreen(screen);
     	 
-    	 logger.info(Float.toString(screen.game.asset.getProgress()));
+    	 logger.info(Float.toString(game.asset.getProgress()));
      }
 
 
@@ -53,7 +56,6 @@ public class loadingScreen extends basicScreen {
     @Override
      public void hide() {
           // called when current screen changes from this to a different screen
-    	this.screen = game.rain;
      }
 
 

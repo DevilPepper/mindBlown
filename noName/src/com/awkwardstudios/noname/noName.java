@@ -15,24 +15,17 @@ public class noName extends Game {
 	endlessScreen endless;
 	creditsScreen credits;
 	rainNbucket rain;
-	myGdxGame rain2;
 	
 	loadingScreen load;
-	public Assets asset;
-//AssetManager asset;
+	Assets asset;
 	
    @Override
     public void create() {
 	   stuff.printf("nothing to see\n");
-	   //asset = new Assets("data/assets.xml");
-//asset = new AssetManager();
-//asset.setLoader(Texture.class, new TextureLoader((new InternalFileHandleResolver())));
-	   //stuff.printf("asset initialized\n");
-	   
-	   rain2 = new myGdxGame(this);
-	   //rain = new rainNbucket(this);
+	   asset = new Assets("data/assets.xml");
+	   rain = new rainNbucket(this);
 	   //splash = new splashScreen(this); //load loading screen assets while displaying this
-	   //load = new loadingScreen(this);
+	   load = new loadingScreen(this);
 	   //tit = new titleScreen(this);
 	   //options = new optionsScreen(this);
 	   //gameOver = new gameOverScreen(this);
@@ -40,8 +33,8 @@ public class noName extends Game {
 	   //endless = new endlessScreen(this);
 	   //credits = new creditsScreen(this);
 	   stuff.printf("about to load\n");
-	   //load.load(rain, "rain"); //here
-	   //stuff.printf("load was queued");
-	   setScreen(rain2);
+	   load.load(rain); //here
+	   stuff.printf("load was queued");
+	   //setScreen(rain); //causes error
     }
 }
