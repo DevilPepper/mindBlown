@@ -27,8 +27,8 @@ public class noName extends Game {
 
        Texture.setEnforcePotImages(false);
 	   asset = new Assets("data/assets.xml");
-	   rain = new rainNbucket(this);
-	   scroll = new testScroll(this);
+	   //rain = new rainNbucket(this);
+	   //scroll = new testScroll(this);
 	   //splash = new splashScreen(this); //load loading screen assets while displaying this
 	   load = new loadingScreen(this);
 	   //tit = new titleScreen(this);
@@ -38,7 +38,8 @@ public class noName extends Game {
 	   //endless = new endlessScreen(this);
 	   //credits = new creditsScreen(this);
 	   stuff.printf("about to load\n");
-	   load.load(scroll); //here
+	   //load.load(scroll); //here
+	   load.load(new basicStage(this));
 	   //stuff.printf("load was queued");
 	   //setScreen(scroll); //causes error
     }
