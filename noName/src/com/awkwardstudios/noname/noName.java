@@ -14,7 +14,9 @@ public class noName extends Game {
 	stage1Screen stage1;
 	endlessScreen endless;
 	creditsScreen credits;
+	
 	rainNbucket rain;
+	testScroll scroll;
 	
 	loadingScreen load;
 	Assets asset;
@@ -22,8 +24,11 @@ public class noName extends Game {
    @Override
     public void create() {
 	   stuff.printf("nothing to see\n");
+
+       Texture.setEnforcePotImages(false);
 	   asset = new Assets("data/assets.xml");
 	   rain = new rainNbucket(this);
+	   scroll = new testScroll(this);
 	   //splash = new splashScreen(this); //load loading screen assets while displaying this
 	   load = new loadingScreen(this);
 	   //tit = new titleScreen(this);
@@ -33,8 +38,8 @@ public class noName extends Game {
 	   //endless = new endlessScreen(this);
 	   //credits = new creditsScreen(this);
 	   stuff.printf("about to load\n");
-	   load.load(rain); //here
-	   stuff.printf("load was queued");
-	   //setScreen(rain); //causes error
+	   load.load(scroll); //here
+	   //stuff.printf("load was queued");
+	   //setScreen(scroll); //causes error
     }
 }

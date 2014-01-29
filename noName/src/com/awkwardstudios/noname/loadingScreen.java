@@ -36,9 +36,15 @@ public class loadingScreen extends basicScreen {
      @Override
      public void render(float delta) {
     	 logger.info("RENDERING");
-    	 if(game.asset.update())game.setScreen(screen);
+    	 if(game.asset.update())
+    		 {
+    		 	logger.info("setting screen");
+    		 	game.setScreen(screen);
+    		 	logger.info("screen set");
+    		 }
     	 
     	 logger.info(Float.toString(game.asset.getProgress()));
+    	 logger.info("next");
      }
 
 

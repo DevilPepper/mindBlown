@@ -6,4 +6,9 @@
                 <asset type="com.badlogic.gdx.graphics.Texture" path="data/bucket.png" />
                 <asset type="com.badlogic.gdx.graphics.Texture" path="data/droplet.png" />
         </group>
+        <group name="scroll">
+                <asset type="com.badlogic.gdx.graphics.Texture" path="data/bg_under.png" />
+                <asset type="com.badlogic.gdx.graphics.Texture" path="data/bg_middle2.png" />
+                <asset type="com.badlogic.gdx.graphics.Texture" path="data/bg_over.png" />
+        </group>group>
 </assets>
