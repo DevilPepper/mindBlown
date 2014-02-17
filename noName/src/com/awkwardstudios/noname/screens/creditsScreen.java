@@ -1,17 +1,18 @@
-package com.awkwardstudios.noname;
+package com.awkwardstudios.noname.screens;
 
+import com.awkwardstudios.noname.noName;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 
-public class optionsScreen implements Screen {
+public class creditsScreen implements Screen {
 	 
 
     noName game; // Note it's "MyGame" not "Game"
 
 
     // constructor to keep a reference to the main Game class
-     public optionsScreen(noName g){
+     public creditsScreen(noName g){
              this.game = g;
      }
 

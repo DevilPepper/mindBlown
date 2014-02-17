@@ -1,21 +1,19 @@
-package com.awkwardstudios.noname;
+package com.awkwardstudios.noname.screens;
 
+import com.awkwardstudios.noname.noName;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 
-public class basicScreen implements Screen {
+public class titleScreen implements Screen {
 	 
 
-    protected noName game;
-    protected String groupname;
+    noName game; // Note it's "MyGame" not "Game"
 
-    public String getAssetGroup(){return groupname;}
-    
+
     // constructor to keep a reference to the main Game class
-     public basicScreen(noName g){
+     public titleScreen(noName g){
              this.game = g;
-             this.groupname = "load";
      }
 
      @Override

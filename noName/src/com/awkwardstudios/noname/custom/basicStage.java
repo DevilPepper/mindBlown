@@ -1,5 +1,6 @@
-package com.awkwardstudios.noname;
+package com.awkwardstudios.noname.custom;
 
+import com.awkwardstudios.noname.noName;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureWrap;
@@ -34,7 +35,7 @@ public class basicStage extends basicScreen {
     	 top.setV(scrollTimer/3);
     	 top.setV2(scrollTimer/3 + 1);
 	     
-    	 mid.setRotation(scrollTimer/2);
+    	 mid.setRotation(scrollTimer*89);
 	     
 	     spriteBatch.begin();
 	     	bottom.draw(spriteBatch);

@@ -1,4 +1,4 @@
-package com.awkwardstudios.noname;
+package com.awkwardstudios.noname.custom;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;

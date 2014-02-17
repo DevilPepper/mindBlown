@@ -1,5 +1,7 @@
-package com.awkwardstudios.noname;
+package com.awkwardstudios.noname.screens;
 
+import com.awkwardstudios.noname.noName;
+import com.awkwardstudios.noname.custom.basicScreen;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;

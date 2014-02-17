@@ -1,8 +1,10 @@
-package com.awkwardstudios.noname;
+package com.awkwardstudios.noname.test;
 
 
 import java.util.Iterator;
 
+import com.awkwardstudios.noname.noName;
+import com.awkwardstudios.noname.custom.basicScreen;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.audio.Music;

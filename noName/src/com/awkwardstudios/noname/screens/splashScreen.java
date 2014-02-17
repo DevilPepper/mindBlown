@@ -1,26 +1,27 @@
-package com.awkwardstudios.noname;
+package com.awkwardstudios.noname.screens;
 
+import com.awkwardstudios.noname.noName;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 
-public class creditsScreen implements Screen {
+public class splashScreen implements Screen {
 	 
 
     noName game; // Note it's "MyGame" not "Game"
 
 
     // constructor to keep a reference to the main Game class
-     public creditsScreen(noName g){
+     public splashScreen(noName g){
              this.game = g;
      }
-
+     
      @Override
      public void render(float delta) {
          // update and draw stuff
-    	 Gdx.gl.glClearColor(0, 0, 1, 1);
+    	 Gdx.gl.glClearColor(1, 1, 1, 1);
          Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-    	 if(Gdx.input.isTouched())game.setScreen(game.splash);;
+    	 if(Gdx.input.isTouched())game.setScreen(game.tit);
      }
 
 

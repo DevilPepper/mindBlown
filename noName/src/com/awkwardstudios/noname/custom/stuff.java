@@ -1,4 +1,4 @@
-package com.awkwardstudios.noname;
+package com.awkwardstudios.noname.custom;
 
 import java.io.PrintStream;
 import java.util.Locale;

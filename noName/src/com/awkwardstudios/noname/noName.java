@@ -1,5 +1,17 @@
 package com.awkwardstudios.noname;
 
+import com.awkwardstudios.noname.custom.Assets;
+import com.awkwardstudios.noname.custom.basicStage;
+import com.awkwardstudios.noname.custom.stuff;
+import com.awkwardstudios.noname.screens.creditsScreen;
+import com.awkwardstudios.noname.screens.endlessScreen;
+import com.awkwardstudios.noname.screens.gameOverScreen;
+import com.awkwardstudios.noname.screens.loadingScreen;
+import com.awkwardstudios.noname.screens.optionsScreen;
+import com.awkwardstudios.noname.screens.splashScreen;
+import com.awkwardstudios.noname.screens.stage1Screen;
+import com.awkwardstudios.noname.screens.titleScreen;
+import com.awkwardstudios.noname.test.rainNbucket;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.assets.loaders.TextureLoader;
@@ -7,8 +19,8 @@ import com.badlogic.gdx.assets.loaders.resolvers.InternalFileHandleResolver;
 import com.badlogic.gdx.graphics.Texture;
 
 public class noName extends Game {
-	splashScreen splash;
-	titleScreen tit;
+	public splashScreen splash;
+	public titleScreen tit;
 	optionsScreen options;
 	gameOverScreen gameOver;
 	stage1Screen stage1;
@@ -16,10 +28,10 @@ public class noName extends Game {
 	creditsScreen credits;
 	
 	rainNbucket rain;
-	testScroll scroll;
+	//testScroll scroll;
 	
 	loadingScreen load;
-	Assets asset;
+	public Assets asset;
 	
    @Override
     public void create() {
@@ -27,6 +39,7 @@ public class noName extends Game {
 
        Texture.setEnforcePotImages(false);
 	   asset = new Assets("data/assets.xml");
+	   asset.showJson();
 	   //rain = new rainNbucket(this);
 	   //scroll = new testScroll(this);
 	   //splash = new splashScreen(this); //load loading screen assets while displaying this
